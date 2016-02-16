@@ -14,15 +14,19 @@ They are integrated in the mezzanine admin.
 
 requirements: django_ckeditor==5.0.3
 
-$ cd <my_mezzanine_dir>
-$ pip install django_ckeditor==5.0.3
-$ git clone https://github.com/gotsunami/balcony.git
-$ python manage.py migrate balcony
+```
+  $ cd <my_mezzanine_dir>
+  $ pip install django_ckeditor==5.0.3
+  $ git clone https://github.com/gotsunami/balcony.git
+  $ python manage.py migrate balcony
+```
 
-Edit your settings.py and add "balcony" as the first entry in your INSTALLED_APPS.
+Edit your `settings.py` and add `"balcony"` as the first entry in your `INSTALLED_APPS`.
 
 Run the server for testing:
 
-$ python manage.py runserver
+```
+  $ python manage.py runserver
+```
 
 Or restart your webservice (probably nginx or apache).
