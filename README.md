@@ -21,7 +21,22 @@ requirements: django_ckeditor==5.0.3
   $ python manage.py migrate balcony
 ```
 
-Edit your `settings.py` and add `"balcony"` as the first entry in your `INSTALLED_APPS`.
+Edit your `settings.py`, add `"ckeditor"` and `"balcony"` as the first entry in your `INSTALLED_APPS`:
+
+```
+INSTALLED_APPS = (
+    "ckeditor",
+    "balcony",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    ...
+    "django.contrib.staticfiles",
+    "mezzanine.boot",
+    "mezzanine.conf",
+    ...
+)
+
+```
 
 Run the server for testing:
 
