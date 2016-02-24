@@ -19,3 +19,7 @@ class Home(models.Model):
     sliders = models.BooleanField(default=True, verbose_name=u"Show sliders")
     badges = models.BooleanField(default=True, verbose_name=u"Show badges")
     homeblocs = models.BooleanField(default=True, verbose_name=u"Show argumentaries")
+
+    class Meta:
+        verbose_name = u"Homepage"
+        verbose_name_plural = u"Homepage"
