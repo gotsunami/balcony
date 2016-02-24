@@ -3,9 +3,9 @@
 from django.contrib import admin
 from django.contrib.messages import SUCCESS
 
-from balcony.models import Badge, HomeBloc
+from balcony.models import Home, Badge, HomeBloc
 
-class HomeAdmin(admin.ModelAdmin):
+class HomeBlocAdmin(admin.ModelAdmin):
     list_display = ['title', 'active', 'date_added']
     list_filter = ['active', 'date_added']
     actions = ['activate', 'deactivate']
@@ -28,5 +28,6 @@ class HomeAdmin(admin.ModelAdmin):
         self.message_user(request, message=message, level=SUCCESS)
     deactivate.short_description = u"Desactiver les blocs séléctionnés"
 
-admin.site.register(Badge, HomeAdmin)
-admin.site.register(HomeBloc, HomeAdmin)
+admin.site.register(Badge, HomeBlocAdmin)
+admin.site.register(HomeBloc, HomeBlocAdmin)
+admin.site.register(Home)

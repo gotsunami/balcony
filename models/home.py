@@ -13,3 +13,9 @@ class HomeBloc(Shortcut):
 
 class Badge(Shortcut):
     pass
+
+
+class Home(models.Model):
+    sliders = models.BooleanField(default=True, verbose_name=u"Show sliders")
+    badges = models.BooleanField(default=True, verbose_name=u"Show badges")
+    homeblocs = models.BooleanField(default=True, verbose_name=u"Show argumentaries")
