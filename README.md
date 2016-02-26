@@ -12,13 +12,17 @@ They are integrated in the mezzanine admin.
 
 # installation
 
-requirements: django_ckeditor==5.0.3
+requirements:
+- django_ckeditor==5.0.3
+- django-colorfield==0.1.10
 
 ```
   $ cd <my_mezzanine_dir>
   $ pip install django_ckeditor==5.0.3
+  $ pip install django_ckeditor==0.1.10
   $ git clone https://github.com/gotsunami/balcony.git
   $ python manage.py migrate balcony
+  $ python manage.py collectstatic
 ```
 
 Edit your `settings.py`, add `"ckeditor"` and `"balcony"` as the first entry in your `INSTALLED_APPS`:
@@ -26,6 +30,7 @@ Edit your `settings.py`, add `"ckeditor"` and `"balcony"` as the first entry in 
 ```
 INSTALLED_APPS = (
     "ckeditor",
+    "colorfield",
     "balcony",
     "django.contrib.admin",
     "django.contrib.auth",

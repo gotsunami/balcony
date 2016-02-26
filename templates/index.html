@@ -12,7 +12,7 @@
 
 {% if settings.sliders %}
 <section class="no-margin" id="main-slider">
-  <div class="carousel slide wet-asphalt">
+  <div class="carousel slide" style="background-color: {{ settings.sliders_color }};">
     <ol class="carousel-indicators">
       {% for slider in settings.get_sliders %}
       <li class="" data-slide-to="{{ forloop.counter0 }}" data-target="#main-slider"{% if forloop.counter0 == 0 %} class="active"{% endif %}></li>
@@ -45,42 +45,26 @@
 {% endif %}
 
 {% if settings.badges %}
-<section class="emerald" id="services">
+<section id="services" class="emerald" style="background-color:{{settings.badges_color}};">
   <div class="container">
     <div class="row">
-                <div class="col-md-4 col-sm-6">
-                  <div class="media">
-                    <div class="pull-left">
-                      <i class="icon-twitter icon-md"></i>
-                    </div>
-                    <div class="media-body">
-                      <h3 class="media-heading">Twitter Marketing</h3>
-                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-                    </div>
-                  </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6">
-                  <div class="media">
-                    <div class="pull-left">
-                      <i class="icon-facebook icon-md"></i>
-                    </div>
-                    <div class="media-body">
-                      <h3 class="media-heading">Facebook Marketing</h3>
-                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-                    </div>
-                  </div>
-                </div><!--/.col-md-4-->
-                <div class="col-md-4 col-sm-6">
-                  <div class="media">
-                    <div class="pull-left">
-                      <i class="icon-google-plus icon-md"></i>
-                    </div>
-                    <div class="media-body">
-                      <h3 class="media-heading">Google Plus Marketing</h3>
-                      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</p>
-                    </div>
-                  </div>
-                </div><!--/.col-md-4-->
+      {% for badge in settings.get_badges %}
+      <div class="col-md-4 col-sm-6">
+        <div class="media">
+          <div class="pull-left">
+            <i class=" icon-md">
+	      {% if badge.image %}
+	      <img src="/static/media/{{ badge.image }}" class="img-responsive" />
+	      {% endif %}
+	    </i>
+          </div>
+          <div class="media-body">
+            <h3 class="media-heading">{{ badge.title }}</h3>
+            {{ badge.text|safe }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -88,112 +72,29 @@
 
 {% if settings.homeblocs %}
 <section id="recent-works">
-  <div class="container">
+  <div class="container" style="background-color:{{settings.homeblocs_color}};">
+    {% for bloc in settings.get_homeblocs %}
     <div class="row">
-      <div class="col-md-3">
-        <h3>Our Latest Project</h3>
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-        <div class="btn-group">
-          <a class="btn btn-danger" href="#scroller" data-slide="prev"><i class="icon-angle-left"></i></a>
-          <a class="btn btn-danger" href="#scroller" data-slide="next"><i class="icon-angle-right"></i></a>
-        </div>
-        <p class="gap"></p>
-      </div>
+      {% if bloc.image %}
       <div class="col-md-9">
-        <div id="scroller" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="item active">
-              <div class="row">
-                <div class="col-xs-4">
-                  <div class="portfolio-item">
-                    <div class="item-inner">
-                      <img class="img-responsive" src="{% static "images/portfolio/recent/item1.png" %}" alt="">
-                      <h5>
-                        Nova - Corporate site template
-                      </h5>
-                      <div class="overlay">
-                        <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>                            
-                <div class="col-xs-4">
-                  <div class="portfolio-item">
-                    <div class="item-inner">
-                      <img class="img-responsive" src="{% static "images/portfolio/recent/item3.png" %}" alt="">
-                      <h5>
-                        Fornax - Apps site template
-                      </h5>
-                      <div class="overlay">
-                        <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>                            
-                <div class="col-xs-4">
-                  <div class="portfolio-item">
-                    <div class="item-inner">
-                      <img class="img-responsive" src="{% static "images/portfolio/recent/item2.png" %}" alt="">
-                      <h5>
-                        Flat Theme - Business Theme
-                      </h5>
-                      <div class="overlay">
-                        <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div><!--/.row-->
-            </div><!--/.item-->
-            <div class="item">
-              <div class="row">
-                <div class="col-xs-4">
-                  <div class="portfolio-item">
-                    <div class="item-inner">
-                      <img class="img-responsive" src="{% static "images/portfolio/recent/item2.png" %}" alt="">
-                      <h5>
-                        Flat Theme - Business Theme
-                      </h5>
-                      <div class="overlay">
-                        <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xs-4">
-                  <div class="portfolio-item">
-                    <div class="item-inner">
-                      <img class="img-responsive" src="{% static "images/portfolio/recent/item1.png" %}" alt="">
-                      <h5>
-                        Nova - Corporate site template
-                      </h5>
-                      <div class="overlay">
-                        <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>                            
-                <div class="col-xs-4">
-                  <div class="portfolio-item">
-                    <div class="item-inner">
-                      <img class="img-responsive" src="{% static "images/portfolio/recent/item3.png" %}" alt="">
-                      <h5>
-                        Fornax - Apps site template
-                      </h5>
-                      <div class="overlay">
-                        <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{% static  "images/portfolio/full/item1.jpg" %}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div><!--/.item-->
-          </div>
-        </div>
+      {% else %}
+      <div class="col-md-12">
+      {% endif %}
+      <h3>
+        {{ bloc.title }}
+      </h3>
+      {{ bloc.text|safe }}
+      </div><!--/.row-->
+      {% if bloc.image %}
+      <div class="col-md-3">
+	<p class="gap"></p>
+	<img src="/static/media/{{ bloc.image }}" class="img-responsive" />
       </div>
-    </div><!--/.row-->
+      {% endif %}
+    </div>
+    {% endfor %}
   </div>
-</section><!--/#recent-works-->
+</section>
 {% endif %}
 
 {% endblock %}
