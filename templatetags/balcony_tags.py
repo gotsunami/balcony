@@ -7,7 +7,7 @@ from balcony.models import Home
 register = template.Library()
 
 @register.assignment_tag
-def home():
+def balcony_settings():
     home = Home.objects.all()
     if home.count():
         home = home[0]
@@ -16,4 +16,3 @@ def home():
         home.save()
 
     return home
-    return urlresolvers.reverse('admin:%s_%s_change' % (home._meta.app_label, home._meta.model_name), args=(home.id, ))

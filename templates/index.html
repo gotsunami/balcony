@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n staticfiles home %}
+{% load i18n staticfiles balcony_tags %}
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
 {% block top %}
@@ -8,18 +8,18 @@
 
 {% block main %}
 
-{% home as settings %}
+{% balcony_settings as balcony %}
 
-{% if settings.sliders %}
+{% if balcony.sliders %}
 <section class="no-margin" id="main-slider">
-  <div class="carousel slide" style="background-color: {{ settings.sliders_color }};">
+  <div class="carousel slide" style="background-color: {{ balcony.sliders_color }};">
     <ol class="carousel-indicators">
-      {% for slider in settings.get_sliders %}
+      {% for slider in balcony.get_sliders %}
       <li class="" data-slide-to="{{ forloop.counter0 }}" data-target="#main-slider"{% if forloop.counter0 == 0 %} class="active"{% endif %}></li>
       {% endfor %}
     </ol>
     <div class="carousel-inner">
-      {% for slider in settings.get_sliders %}
+      {% for slider in balcony.get_sliders %}
       <div style="background-image: url(/static/media/{{ slider.image }})" class="item{% if forloop.counter0 == 0 %} active{% endif %}">
         <div class="container">
           <div class="row">
@@ -44,11 +44,11 @@
 </section>
 {% endif %}
 
-{% if settings.badges %}
-<section id="services" class="emerald" style="background-color:{{settings.badges_color}};">
+{% if balcony.badges %}
+<section id="services" class="emerald" style="background-color:{{balcony.badges_color}};">
   <div class="container">
     <div class="row">
-      {% for badge in settings.get_badges %}
+      {% for badge in balcony.get_badges %}
       <div class="col-md-4 col-sm-6">
         <div class="media">
           <div class="pull-left">
@@ -70,10 +70,10 @@
 </section>
 {% endif %}
 
-{% if settings.homeblocs %}
+{% if balcony.homeblocs %}
 <section id="recent-works">
-  <div class="container" style="background-color:{{settings.homeblocs_color}};">
-    {% for bloc in settings.get_homeblocs %}
+  <div class="container" style="background-color:{{balcony.homeblocs_color}};">
+    {% for bloc in balcony.get_homeblocs %}
     <div class="row">
       {% if bloc.image %}
       <div class="col-md-9">

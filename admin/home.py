@@ -28,6 +28,14 @@ class HomeBlocAdmin(admin.ModelAdmin):
         self.message_user(request, message=message, level=SUCCESS)
     deactivate.short_description = u"Desactiver les blocs séléctionnés"
 
+class HomeAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('Header', {'fields': ['logo', 'header_color']}),
+        ('Home page', {'fields': [('sliders', 'sliders_color'),
+                                  ('badges', 'badges_color'),
+                                  ('homeblocs', 'homeblocs_color'),]}),
+    )
+
 admin.site.register(Badge, HomeBlocAdmin)
 admin.site.register(HomeBloc, HomeBlocAdmin)
-admin.site.register(Home)
+admin.site.register(Home, HomeAdmin)

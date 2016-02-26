@@ -9,8 +9,8 @@ from balcony.models import Shortcut, Slider
 
 class HomeBloc(Shortcut):
     class Meta:
-        verbose_name = u'Argumentaire'
-        verbose_name_plural = u'Argumentaires'
+        verbose_name = u'Argumentary'
+        verbose_name_plural = u'Argumentaries'
         ordering = ('date_added',)
 
 class Badge(Shortcut):
@@ -24,10 +24,10 @@ class Home(models.Model):
     badges = models.BooleanField(default=True, verbose_name=u"Show badges")
     homeblocs = models.BooleanField(default=True, verbose_name=u"Show argumentaries")
 
-    header_color = ColorField(default="#3264AD", verbose_name=u"Header background color")
-    sliders_color = ColorField(default="#3264AD", verbose_name=u"Slideshow background color")
-    badges_color = ColorField(default="#3264AD", verbose_name=u"Badges background color")
-    homeblocs_color = ColorField(default="#EEEEEE", verbose_name=u"Main background color")
+    header_color = ColorField(default="#3264AD", verbose_name=u"Background color")
+    sliders_color = ColorField(default="#3264AD", verbose_name=u"Background color")
+    badges_color = ColorField(default="#3264AD", verbose_name=u"Background color")
+    homeblocs_color = ColorField(default="#EEEEEE", verbose_name=u"Background color")
 
     def get_sliders(self):
         return Slider.objects.all()
@@ -40,5 +40,5 @@ class Home(models.Model):
 
 
     class Meta:
-        verbose_name = u"Homepage"
-        verbose_name_plural = u"Homepage"
+        verbose_name = u"Global settings"
+        verbose_name_plural = u"Global settings"
