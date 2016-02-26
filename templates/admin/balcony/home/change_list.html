@@ -1,8 +1,8 @@
-{% load home %}
+{% load balcony_tags %}
 
 <html>
   <head>
-    {% home as original %}
+    {% balcony_settings as original %}
     <meta http-equiv="REFRESH" content="0;url={% url 'admin:balcony_home_change' original.id %}">
   </head>
   <body>

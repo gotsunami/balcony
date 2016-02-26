@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n staticfiles balcony_tags %}
+{% load i18n static balcony_tags %}
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
 {% block top %}
@@ -9,6 +9,7 @@
 {% block main %}
 
 {% balcony_settings as balcony %}
+{% get_media_prefix as MEDIA_PREFIX %}
 
 {% if balcony.sliders %}
 <section class="no-margin" id="main-slider">
@@ -20,7 +21,7 @@
     </ol>
     <div class="carousel-inner">
       {% for slider in balcony.get_sliders %}
-      <div style="background-image: url(/static/media/{{ slider.image }})" class="item{% if forloop.counter0 == 0 %} active{% endif %}">
+      <div style="background-image: url({{ MEDIA_PREFIX }}{{ slider.image }})" class="item{% if forloop.counter0 == 0 %} active{% endif %}">
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
@@ -54,7 +55,7 @@
           <div class="pull-left">
             <i class=" icon-md">
 	      {% if badge.image %}
-	      <img src="/static/media/{{ badge.image }}" class="img-responsive" />
+	      <img src="{{ MEDIA_PREFIX }}{{ badge.image }}" class="img-responsive" />
 	      {% endif %}
 	    </i>
           </div>
@@ -88,7 +89,7 @@
       {% if bloc.image %}
       <div class="col-md-3">
 	<p class="gap"></p>
-	<img src="/static/media/{{ bloc.image }}" class="img-responsive" />
+	<img src="{{ MEDIA_PREFIX }}{{ bloc.image }}" class="img-responsive" />
       </div>
       {% endif %}
     </div>
