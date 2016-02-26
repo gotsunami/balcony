@@ -10,7 +10,7 @@ class FooterShortcutInline(admin.TabularInline):
     model = FooterShortcut
 
 class FooterAdmin(admin.ModelAdmin):
-    list_display = ['title', 'order']
+    list_display = ['title']
 
     inlines = [FooterShortcutInline, ]
 

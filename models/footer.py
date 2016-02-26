@@ -2,12 +2,13 @@
 
 from django.db import models
 
+from ckeditor.fields import RichTextField
+
 from balcony.models import Shortcut
 
 class Footer(models.Model):
     title = models.CharField(max_length=200, verbose_name=u"Title", null=True, blank=True)
-    order = models.IntegerField(verbose_name=u"Position")
-
+    text = RichTextField(verbose_name=u"Texte", null=True, blank=True)
 
     def __unicode__(self):
         return self.title
@@ -15,8 +16,7 @@ class Footer(models.Model):
     class Meta:
         verbose_name = u'Footer'
         verbose_name_plural = u'Footers'
-        ordering = ["order",]
     
 class FooterShortcut(Shortcut):
-    footer = models.ForeignKey(Footer, related_name="shortcut")
+    footer = models.ForeignKey(Footer, related_name="shortcuts")
     

@@ -5,11 +5,11 @@ from django.utils.timezone import now
 
 from ckeditor.fields import RichTextField
 
-from balcony.models import Content
+from mezzanine.pages.models import Page
 
 
 class Shortcut(models.Model):
-    page = models.ForeignKey(Content, related_name="shortcut", verbose_name=u"Page", null=True, blank=True)
+    page = models.ForeignKey(Page, related_name="shortcut", verbose_name=u"Page", null=True, blank=True)
     title = models.CharField(max_length=200, verbose_name=u"Titre", null=True, blank=True)
     image = models.ImageField(verbose_name=u"Image", upload_to="shortcut", null=True, blank=True)
     text = RichTextField(verbose_name=u"Texte", null=True, blank=True)

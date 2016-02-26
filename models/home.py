@@ -5,7 +5,7 @@ from django.utils.timezone import now
 
 from colorfield.fields import ColorField
 
-from balcony.models import Shortcut, Slider
+from balcony.models import Shortcut, Slider, Footer
 
 class HomeBloc(Shortcut):
     class Meta:
@@ -30,13 +30,16 @@ class Home(models.Model):
     homeblocs_color = ColorField(default="#EEEEEE", verbose_name=u"Background color")
 
     def get_sliders(self):
-        return Slider.objects.all()
+        return Slider.objects.filter(active=True).order_by('-date_added')
 
     def get_badges(self):
-        return Badge.objects.all()
+        return Badge.objects.filter(active=True).order_by('-date_added')
 
     def get_homeblocs(self):
-        return HomeBloc.objects.all()
+        return HomeBloc.objects.filter(active=True).order_by('-date_added')
+
+    def get_footers(self):
+        return Footer.objects.all()[:3]
 
 
     class Meta:

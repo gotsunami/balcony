@@ -62,6 +62,9 @@
           <div class="media-body">
             <h3 class="media-heading">{{ badge.title }}</h3>
             {{ badge.text|safe }}
+	    {% if badge.page or badge.url %}
+	    <a class="btn btn-primary" href="{% if badge.url %}{{ badge.url }}{% else %}{{ badge.page.slug }}{% endif %}">{% if badge.button_text %}{{ badge.button_text }}{% else %}En savoir plus{% endif %}</a>
+	    {% endif %}
           </div>
         </div>
       </div>
